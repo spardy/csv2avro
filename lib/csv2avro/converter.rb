@@ -14,7 +14,7 @@ class CSV2Avro
       self.class.logger
     end
 
-    def initialize(reader, writer, bad_rows_writer, filename, options, schema: schema)
+    def initialize(reader, writer, bad_rows_writer, filename, options, schema:)
       @reader = reader
       @writer = writer
       @bad_rows_writer = bad_rows_writer
@@ -78,7 +78,8 @@ class CSV2Avro
         headers: @header,
         header_converters: :aliases,
         skip_blanks: true,
-        write_headers: true
+        write_headers: false,
+        liberal_parsing: true
       }
     end
 
@@ -91,7 +92,7 @@ class CSV2Avro
     end
 
     def row_number
-      @reader.lineno + 1
+      @csv.lineno + 1
     end
 
     def add_defaults_to_hash!(hash)

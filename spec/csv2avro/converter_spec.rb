@@ -42,7 +42,7 @@ RSpec.describe CSV2Avro::Converter do
         end
 
         it 'should store the data with the given schema' do
-          expect(AvroReader.new(avro_writer).read).to eq(
+          expect(AvroReader.new(writer).read).to eq(
             [
               { 'id'=>1, 'name'=>'dresses',     'description'=>'Dresses' },
               { 'id'=>2, 'name'=>'female-tops', 'description'=>nil }

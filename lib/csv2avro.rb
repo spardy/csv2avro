@@ -57,7 +57,7 @@ class CSV2Avro
       writer = if stdout_option
         IO.new(STDOUT.fileno)
       else
-        File.open(avro_uri, 'w')
+        File.open(avro_uri, 'wb')
       end
 
       CSV2Avro::AvroWriter.new(writer, schema)
